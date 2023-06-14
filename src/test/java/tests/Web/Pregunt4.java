@@ -9,6 +9,7 @@ import utils.dataProperties.TodoIstProperties;
 import webInterface.singletonSession.Session;
 
 import java.time.Duration;
+import java.util.Date;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
@@ -49,11 +50,49 @@ public class Pregunt4 extends TestBaseP4{
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form//div//a[@href='/app/settings/account/password']")));
             settingsSection.changePass.click();
         }
-        Thread.sleep(5000);
-        String newPwd="mimamamemima";
+        //Por favor recordar la contraseña updated para cambiarla al pwd de Properties y usar otra
+        //En el momento que esto se commitea, ya fue cambiado exitosamente a mimamameama
+        String newPwd="mimamameama";
         settingsSection.currentPwd.setText(TodoIstProperties.pwd);
         settingsSection.newPwd.setText(newPwd);
         settingsSection.confirmNewPwd.setText(newPwd);
+
+        settingsSection.changeButton.click();
+        Thread.sleep(1000);
+        settingsSection.close.click();
+
+
+        try {
+            menuSection.profile.click();
+        } catch (Exception e){
+            System.out.println("Caught not clickable button");
+            WebDriverWait wait= new WebDriverWait(Session.getSession("chrome").getBrowser(), Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.and(elementToBeClickable(By.id(":r2:")),invisibilityOfElementLocated(By.xpath("//div[contains(@class,'loading_screen')]"))));
+            menuSection.profile.click();
+        }
+        Thread.sleep(2500);
+
+        menuSection.logOut.click();
+        Thread.sleep(2000);
+        mainPage.loginButton.click();
+
+        loginSection.emailTxtBox.setText(TodoIstProperties.host);
+        loginSection.pwdTxtBox.setText(newPwd);
+
+        loginSection.loginButton.click();
+
+        try {
+            menuSection.profile.click();
+        } catch (Exception e){
+            System.out.println("Caught not clickable button");
+            WebDriverWait wait= new WebDriverWait(Session.getSession("chrome").getBrowser(), Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.and(elementToBeClickable(By.id(":r2:")),invisibilityOfElementLocated(By.xpath("//div[contains(@class,'loading_screen')]"))));
+            menuSection.profile.click();
+        }
+        Thread.sleep(2500);
+
+        Assertions.assertTrue(menuSection.emaillabel.isControlDisplayed(),
+                "ERROR!! Login with new password was not successfully, review credentials");
 
     }
 }

@@ -16,7 +16,7 @@ public class MenuSection {
 
     public Button settings= new Button(By.xpath("//div//span[@class=\"user_menu_label\" and text()=\"Settings\"]"));
 
-
+    public Button logOut= new Button(By.xpath("//button//span[@class=\"user_menu_label\" and text()=\"Log out\"]"));
 
     //Para la práctica personal, no para calificar
     public Button projectLab = new Button(By.xpath("//div[@id='left_menu']//a[@href=\"/app/projects\"]"));
