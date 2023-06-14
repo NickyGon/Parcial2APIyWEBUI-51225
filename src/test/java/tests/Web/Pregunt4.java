@@ -29,7 +29,7 @@ public class Pregunt4 extends TestBaseP4{
             menuSection.profile.click();
         } catch (Exception e){
             System.out.println("Caught not clickable button");
-            WebDriverWait wait= new WebDriverWait(Session.getSession("web").getBrowser(), Duration.ofSeconds(5));
+            WebDriverWait wait= new WebDriverWait(Session.getSession("chrome").getBrowser(), Duration.ofSeconds(5));
             wait.until(ExpectedConditions.and(elementToBeClickable(By.id(":r2:")),invisibilityOfElementLocated(By.xpath("//div[contains(@class,'loading_screen')]"))));
             menuSection.profile.click();
         }
@@ -38,6 +38,22 @@ public class Pregunt4 extends TestBaseP4{
         Assertions.assertTrue(menuSection.emaillabel.isControlDisplayed(),
                 "ERROR!! Login was not successfully, review credentials");
 
+        menuSection.settings.click();
+        Thread.sleep(1000);
+
+        try {
+            settingsSection.changePass.click();
+        } catch (Exception e){
+            System.out.println("Caught not clickable button");
+            WebDriverWait wait= new WebDriverWait(Session.getSession("chrome").getBrowser(), Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form//div//a[@href='/app/settings/account/password']")));
+            settingsSection.changePass.click();
+        }
+        Thread.sleep(5000);
+        String newPwd="mimamamemima";
+        settingsSection.currentPwd.setText(TodoIstProperties.pwd);
+        settingsSection.newPwd.setText(newPwd);
+        settingsSection.confirmNewPwd.setText(newPwd);
 
     }
 }

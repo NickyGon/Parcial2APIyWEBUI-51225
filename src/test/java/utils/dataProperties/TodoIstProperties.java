@@ -1,6 +1,6 @@
 package utils.dataProperties;
 
 public class TodoIstProperties {
-    public static String host="nikita27111@hotmail.com";
-    public static String pwd ="Tumamaen44_";
+    public static String host="nicknoo2904@gmail.com";
+    public static String pwd ="mimamamemima";
 }
