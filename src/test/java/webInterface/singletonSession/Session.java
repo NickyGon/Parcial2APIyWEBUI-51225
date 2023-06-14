@@ -22,6 +22,14 @@ public class Session {
         browser.quit();
     }
 
+    public void dismissAlert(boolean yes){
+        if (yes){
+            browser.switchTo().alert().accept();
+        } else {
+            browser.switchTo().alert().dismiss();
+        }
+    }
+
     public void goTo(String url){
         browser.get(url);
     }
