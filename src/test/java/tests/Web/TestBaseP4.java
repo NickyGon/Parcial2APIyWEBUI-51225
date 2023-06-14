@@ -2,14 +2,18 @@ package tests.Web;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import webInterface.pages.todoly.*;
+import webInterface.pages.todoist.LoginSection;
+import webInterface.pages.todoist.MainPage;
+import webInterface.pages.todoist.MenuSection;
+import webInterface.pages.todoly.ProjectSection;
+import webInterface.pages.todoly.SignUpSection;
 import webInterface.singletonSession.Session;
 
-public class TestBaseP3 {
+public class TestBaseP4 {
+
     protected MainPage mainPage= new MainPage();
-    protected SignUpSection signUpSection= new SignUpSection();
-    protected MenuSection menuSection = new MenuSection();
-    protected ProjectSection projectSection= new ProjectSection();
+    protected LoginSection loginSection= new LoginSection();
+    protected MenuSection menuSection= new MenuSection();
 
     public void alertAnswer(boolean accept){
         Session.getSession("chrome").dismissAlert(accept);
@@ -17,7 +21,7 @@ public class TestBaseP3 {
 
     @BeforeEach
     public void openBrowser(){
-        Session.getSession("chrome").goTo("http://todo.ly/");
+        Session.getSession("chrome").goTo("http://todoist.com/");
     }
 
     @AfterEach

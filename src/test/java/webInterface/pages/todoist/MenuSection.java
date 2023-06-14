@@ -12,6 +12,12 @@ public class MenuSection {
 
     public Label emaillabel = new Label(By.xpath("//div[contains(@style,'--popover')]//div//p[contains(text(),'@')]"));
 
+    //Para el examen
+
+    public Button settings= new Button(By.xpath("//div//span[@class=\"user_menu_label\" and text()=\"Settings\"]"));
+
+
+
     //Para la práctica personal, no para calificar
     public Button projectLab = new Button(By.xpath("//div[@id='left_menu']//a[@href=\"/app/projects\"]"));
 
