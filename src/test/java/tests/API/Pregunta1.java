@@ -36,8 +36,6 @@ public class Pregunta1 {
     public void crudPregunta1(){
         requestInfo.setHost(TodolyProperties.host+"api/user.json").setBody(Userbody.toString());
 
-
-
         response= FactoryRequest.make("post").send(requestInfo);
         response.then()
                 .log().all()

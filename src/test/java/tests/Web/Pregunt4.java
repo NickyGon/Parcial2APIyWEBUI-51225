@@ -52,7 +52,7 @@ public class Pregunt4 extends TestBaseP4{
         }
         //Por favor recordar la contraseña updated para cambiarla al pwd de Properties y usar otra
         //En el momento que esto se commitea, ya fue cambiado exitosamente a mimamameama
-        String newPwd="mimamameama";
+        String newPwd="mimamamemima";
         settingsSection.currentPwd.setText(TodoIstProperties.pwd);
         settingsSection.newPwd.setText(newPwd);
         settingsSection.confirmNewPwd.setText(newPwd);
